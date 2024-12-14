@@ -12,7 +12,7 @@ import ru.capybara.springboot.dto.AuthenticationResponse;
 import ru.capybara.springboot.dto.RegisterRequest;
 import ru.capybara.springboot.exception.EmailIsBusyException;
 import ru.capybara.springboot.exception.UserNotFoundException;
-import ru.capybara.springboot.model.Role;
+import ru.capybara.springboot.exception.UsernameIsBusyException;
 import ru.capybara.springboot.model.User;
 import ru.capybara.springboot.repository.UserRepository;
 
@@ -46,12 +46,13 @@ public class AuthenticationService {
         if (userRepository.findByEmail(request.getEmail()).isPresent()) {
             throw new EmailIsBusyException(request.getEmail());
         }
+        if (userRepository.findByNickname(request.getNickname()).isPresent()) {
+            throw new UsernameIsBusyException(request.getNickname());
+        }
         User user = User.builder()
-                .firstname(request.getFirstname())
-                .lastname(request.getLastname())
+                .nickname(request.getNickname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.USER)
                 .build();
         userRepository.save(user);
         String jwtToken = jwtService.generateToken(user);

@@ -18,7 +18,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
                 .message(ex.getMessage())
                 .errorDescription(ex.getErrorDescription())
                 .status(ex.getStatus())
-                .time(LocalDateTime.now())
+                .time(LocalDateTime.now().toString())
                 .build();
         return ResponseEntity.status(ex.getStatus()).body(error);
     }

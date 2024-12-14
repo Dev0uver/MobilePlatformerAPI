@@ -15,5 +15,5 @@ public class CustomErrorResponse {
     String message;
     String errorDescription;
     HttpStatus status;
-    LocalDateTime time;
+    String time;
 }

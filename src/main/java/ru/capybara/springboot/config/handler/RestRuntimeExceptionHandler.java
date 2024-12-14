@@ -15,7 +15,7 @@ public class RestRuntimeExceptionHandler {
     protected ResponseEntity<CustomErrorResponse> handleConflict(RuntimeException ex, WebRequest request) {
         CustomErrorResponse error = CustomErrorResponse.builder()
                 .message(ex.getMessage())
-                .time(LocalDateTime.now())
+                .time(LocalDateTime.now().toString())
                 .status(HttpStatus.BAD_REQUEST)
                 .errorDescription("Runtime exception")
                 .build();
