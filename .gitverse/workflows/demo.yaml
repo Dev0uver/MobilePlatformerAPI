@@ -1,0 +1,34 @@
+name: QuickStartSpringBoot
+on:
+  push:
+stages:
+  - build
+  - test
+  - deploy
+
+jobs:
+  build:
+    stage: build
+    docker:
+      - image: maven:3.8.4-openjdk-17-slim
+    steps:
+      - script:
+          - mvn clean package -DskipTests
+          - docker-compose build
+
+  test:
+    stage: test
+    docker:
+      - image: maven:3.8.4-openjdk-17-slim
+    steps:
+      - script:
+          - mvn test
+
+  deploy:
+    stage: deploy
+    docker:
+      - image: docker:24.0.6
+    steps:
+      - script:
+          - docker-compose down || true
+          - docker-compose up -d
