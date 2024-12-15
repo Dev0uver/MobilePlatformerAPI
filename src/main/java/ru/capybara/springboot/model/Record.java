@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalTime;
+import java.sql.Time;
 
 @Data
 @Builder
@@ -20,7 +20,7 @@ public class Record {
     @Column(name = "score", nullable = false)
     int score;
     @Column(name = "time", nullable = false)
-    LocalTime time;
+    Time time;
     @Column(name = "level", nullable = false)
     int level;
     @ManyToOne

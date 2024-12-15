@@ -3,7 +3,7 @@ package ru.capybara.springboot.dto;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalTime;
+import java.sql.Time;
 
 @Data
 @Builder
@@ -13,7 +13,7 @@ import java.time.LocalTime;
 public class RecordDto {
     Long id;
     int score;
-    LocalTime time;
+    Time time;
     int level;
     Long userId;
     String nickname;

@@ -38,7 +38,7 @@ public class RecordServiceImpl implements RecordService {
             return recordMapper.toDto(recordRepository.save(recordMapper.toEntity(recordDto)));
         }
         recordDto.setId(record.get().getId());
-        if (record.get().getTime().isBefore(recordDto.getTime())) {
+        if (record.get().getTime().before(recordDto.getTime())) {
             return recordDto;
         }
         if (record.get().getTime().equals(recordDto.getTime())) {
