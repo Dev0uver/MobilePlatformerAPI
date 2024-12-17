@@ -24,7 +24,7 @@ public class RecordController {
         return ResponseEntity.ok(recordService.getBestRecords(level));
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity<RecordDto> saveResult(@RequestBody RecordDto recordDto) {
         return ResponseEntity.ok(recordService.saveResult(recordDto));
     }
