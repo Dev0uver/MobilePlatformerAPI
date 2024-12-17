@@ -2,7 +2,7 @@ spring:
   application:
     name: Platformer
   datasource:
-    url: jdbc:postgresql://localhost:5433/platformer
+    url: jdbc:postgresql://localhost:5432/platformer
     username: postgres
     password: root
     driver-class-name: org.postgresql.Driver
@@ -17,3 +17,11 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
   liquibase:
     change-log: db/master.xml
+
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    key-store: classpath:keystore.jks
+    key-store-password: keypass
+    key-alias: gamekey
